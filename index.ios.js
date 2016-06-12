@@ -32,7 +32,7 @@ class airbnb extends Component {
   render() {
 		return (
 			<Router realm={realm} navigationBarStyle={{backgroundColor: '#fd5c63'}}>
-      	<Scene key='search' component={SearchView}  sceneStyle={{ borderBottom: '#49bae6' }} initial={true} navigationBarStyle={{color: "#000"}} title='aiRNbnb' type='reset' />
+      	<Scene key='search' component={SearchView}  sceneStyle={{ borderBottom: '#49bae6' }} initial={true} title='aiRNbnb' type='reset' />
   		  <Scene key='collection' component={CollectionView} />
         <Scene key='detail' component={DetailView} />
 			</Router>

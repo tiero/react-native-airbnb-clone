@@ -9,9 +9,8 @@ ListView,
 TouchableHighlight,
 Image
 } from 'react-native'
-import Flux, {
+import {
   Actions,
-  dispatch
 } from 'react-native-router-flux';
 //import ButtonFav from '../styles/button';
 

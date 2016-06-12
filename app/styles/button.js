@@ -1,9 +1,6 @@
 /* @flow */
 'use strict';
 
-import React from 'react';
-import {StyleSheet} from 'react-native';
-
 module.exports = StyleSheet.create({
 	button: {
 		backgroundColor: '#05A5D1',

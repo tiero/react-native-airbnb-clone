@@ -12,9 +12,8 @@ import {
   ActivityIndicatorIOS,
   Image
 } from 'react-native'
-import Flux, {
-  Actions,
-  Dispatch
+import {
+  Actions
 } from 'react-native-router-flux'
 
 //images

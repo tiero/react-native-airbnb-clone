@@ -7,8 +7,8 @@
   },
   "dependencies": {
     "react": "^15.0.2",
-    "react-native": "^0.27.0",
-    "react-native-router-flux": "^2.3.13",
+    "react-native": "^0.26.0",
+    "react-native-router-flux": "^3.26.1",
     "react-native-tabs": "^1.0.5",
     "realm": "^0.13.1"
   }
