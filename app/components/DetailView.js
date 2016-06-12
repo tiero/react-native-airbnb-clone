@@ -13,22 +13,22 @@ import Flux, {
   Actions,
   dispatch
 } from 'react-native-router-flux';
-import ButtonFav from '../styles/button';
+//import ButtonFav from '../styles/button';
 
 // Create our component
-export class DetailView extends Component {
+export default class DetailView extends Component {
   constructor(props) {
     super(props)
-    this.state ={
+    this.state = {
       loaded:false,
       saved:false,
     }
-  },
+  }
 
   //fetch from when the view is mounted
   componentDidMount() {
    this.fetchData();
-  },
+  }
 
   fetchData() {
     fetch(REQUEST_URL+this.props.id, {
@@ -47,7 +47,7 @@ export class DetailView extends Component {
         })
       })
       .done();
-  },
+  }
 
   render() {
     if (!this.state.loaded) {
@@ -68,7 +68,7 @@ export class DetailView extends Component {
         <Text numberOfLines={3} style={{color: '#000',fontSize: 20}}>Descrizione: {this.state.data.description}</Text>
       </View>
     );
-  },
+  }
 
   renderLoadingView() {
     return (
@@ -76,7 +76,7 @@ export class DetailView extends Component {
           <Text style={{color: '#0000FF',fontSize: 60}}>Loading...</Text>
         </View>
     )
-  },
+  }
 
   _savedData(){
     this.props.realm.write(() => {
@@ -84,10 +84,7 @@ export class DetailView extends Component {
     });
     Actions.search({});
   }
-
-
-});
-
+}
 var styles = StyleSheet.create({
  	container: {
     	flex: 1,
@@ -130,7 +127,3 @@ var styles = StyleSheet.create({
         paddingTop: 64,
     },
 });
-
-
-//Make this code avilable elsewhere
-module.exports = CollectionView;

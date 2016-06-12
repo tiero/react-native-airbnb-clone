@@ -9,34 +9,38 @@ ListView,
 TouchableHighlight,
 Image
 } from 'react-native'
-import Flux, {
-  Actions,
-  dispatch
-} from 'react-native-router-flux';
-
-
+import {Actions, Scene, Router} from 'react-native-router-flux';
+//import {PREFIX,ROOMS} from './constants'
+const REQUEST_URL = PREFIX + ROOMS
 // Create our component
-var CollectionView = React.createClass({
-  getInitialState() {
+export default class CollectionView extends Component {
+  constructor(props) {
+    super(props)
     var ds = new ListView.DataSource({rowHasChanged: (r1, r2) => r1 !== r2});
-    return {
+    this.state =  {
       loaded: false,
       netError: false,
       dataSource: ds.cloneWithRows({}),
     }
-  },
+  }
 
   //fetch from API
   componentDidMount() {
     this.fetchData();
-  },
-
+  }
   fetchData() {
-    fetch(encodeURI(REQUEST_URL))
+    fetch(encodeURI(REQUEST_URL), {
+                          method: 'GET',
+                          headers: {
+                            'Accept': 'application/json',
+                            'Content-Type': 'application/json',
+                            'X-Parse-Application-Id': 'myappid',
+                          }
+       })
       .then((response) => response.json())
       .then((responseData) => {
         this.setState({
-          dataSource: this.state.dataSource.cloneWithRows(responseData.tieredResults[0].results),
+          dataSource: this.state.dataSource.cloneWithRows(responseData.results),
           loaded: true,
         });
       })
@@ -48,25 +52,22 @@ var CollectionView = React.createClass({
         }
       })
       .done();
-  },
-
+  }
   render() {
     if (this.state.netError) {
       return this.renderErrorMessage();
     }
-
     if (!this.state.loaded) {
         return this.renderLoadingView();
     }
-
     return (
         <ListView
           dataSource={this.state.dataSource}
           renderRow={this.renderRow}
           style={styles.listView}
         />
-    );
-  },
+    )
+  }
 
   renderLoadingView() {
     return (
@@ -74,16 +75,14 @@ var CollectionView = React.createClass({
           <Text style={{color: '#0000FF',fontSize: 60}}>Loading...</Text>
         </View>
     )
-  },
-
+  }
   renderErrorMessage() {
     return (
         <View style={styles.container}>
           <Text style={{color: '#0000FF',fontSize: 60}}>Service unavailable</Text>
         </View>
     )
-  },
-
+  }
   renderRow(row) {
      let image = row.mainImage.server+'/100x100'+row.mainImage.uri;
     return(
@@ -104,14 +103,11 @@ var CollectionView = React.createClass({
         </View>
       </TouchableHighlight>
     )
-  },
-
+  }
   pressRow(rowID){
     Actions.detail({id:rowID});
   }
-
-
-});
+}
 
 var styles = StyleSheet.create({
  	container: {
@@ -154,7 +150,3 @@ var styles = StyleSheet.create({
         paddingTop: 64,
     },
 });
-
-
-//Make this code avilable elsewhere
-module.exports = CollectionView;

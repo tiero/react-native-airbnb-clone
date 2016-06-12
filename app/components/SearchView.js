@@ -1,5 +1,6 @@
 'use strict'
-import React, {
+import React, {Component} from 'react'
+import {
   Text,
   TextInput,
   StyleSheet,
@@ -8,7 +9,6 @@ import React, {
   ListView,
   TouchableHighlight,
   Dimensions,
-  Component,
   ActivityIndicatorIOS,
   Image
 } from 'react-native'
@@ -34,7 +34,6 @@ export default class SearchView extends Component{
     }
     this._renderSearch = this._renderSearch.bind(this)
     this._collection = this._collection.bind(this);
-
   }
   renderRow(data){
     let source = data === 'Rome' ? rome : milan

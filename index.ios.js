@@ -3,22 +3,17 @@
  * React Native: https://github.com/facebook/react-native
  * Dev: http://vulpem.com
  */
-'use strict';
-import React, {
-  AppRegistry,
-  Component,
-} from 'react-native'
-import Flux, {
+import React, {Component} from 'react'
+import { AppRegistry } from 'react-native'
+import {
 	Router,
-	Route,
-	Schema,
-	Animations,
+	Scene,
 } from 'react-native-router-flux'
 import SearchView from './app/components/SearchView'
 import CollectionView from './app/components/CollectionView'
 import DetailView from './app/components/DetailView'
 //Realm
-const Realm = require('realm');
+import Realm from 'realm';
 //Realm Schema
 const Trip = {
   name: 'Trip',
@@ -37,9 +32,9 @@ class airbnb extends Component {
   render() {
 		return (
 			<Router realm={realm} navigationBarStyle={{backgroundColor: '#fd5c63'}}>
-      	<Route name='search' component={SearchView}  sceneStyle={{ borderBottom: '#49bae6' }} initial={true} navigationBarStyle={{color: "#000"}} title='aiRNbnb' type='reset' />
-  		  <Route name='collection' title='Rome' component={CollectionView} />
-        <Route name='detail' title='Attico near Colosseum' component={DetailView} />
+      	<Scene key='search' component={SearchView}  sceneStyle={{ borderBottom: '#49bae6' }} initial={true} navigationBarStyle={{color: "#000"}} title='aiRNbnb' type='reset' />
+  		  <Scene key='collection' component={CollectionView} />
+        <Scene key='detail' component={DetailView} />
 			</Router>
 		)
 	}
