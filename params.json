@@ -1,0 +1,6 @@
+{
+  "name": "React Native Airbnb",
+  "tagline": "Airbnb® Clone built with React Native ",
+  "body": "### Welcome to Airbnb Clone built with React Native.\r\n\r\nTech Stack \r\n* react\r\n* react-native\r\n* flux/redux\r\n* firebase\r\n\r\n### Authors and Contributors\r\nYou can @mention a GitHub username to generate a link to their profile. The resulting `<a>` element will link to the contributor’s GitHub Profile.\r\n \r\nexample: Marco Argentieri (@tiero), founder (https://github.com/vulpemcom)\r\n\r\n### Support or Contact\r\nHaving trouble? [contact support](https://github.com/contact) and we’ll help you sort it out.\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
